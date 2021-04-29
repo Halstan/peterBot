@@ -8,25 +8,25 @@ require('dotenv').config();
 
 client.commands = new Discord.Collection();
 
-for(const file of readdirSync('./commands')){
+for(const file of readdirSync('./src/commands')){
     if(file.endsWith(".js")){
         let fileName = file.substring(0, file.length - 3);
 
-        let fileContents = require(`./commands/${file}`);
+        let fileContents = require(`./src/commands/${file}`);
 
         client.commands.set(fileName, fileContents);
     }
 }
 
-for (const file of readdirSync('./events')) {
+for (const file of readdirSync('./src/events')) {
     if(file.endsWith(".js")){
         let fileName = file.substring(0, file.length - 3);
 
-        let fileContents = require(`./events/${file}`);
+        let fileContents = require(`./src/events/${file}`);
 
         client.on(fileName, fileContents.bind(null, client));
 
-        delete require.cache[require.resolve(`./events/${file}`)];
+        delete require.cache[require.resolve(`./src/events/${file}`)];
     }
 }
 

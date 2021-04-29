@@ -75,6 +75,10 @@ module.exports = (client, message, args) => {
         {
           name: '!kick',
           value: 'Expulsa a un miembro del servidor (solo con permiso para expulsar miembros).'
+        },
+        {
+          name: '!v {evento}',
+          value: 'Avisa de un evento proximo'
         }
       ],
       timestamp: new Date(),
