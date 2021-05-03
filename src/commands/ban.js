@@ -1,4 +1,3 @@
-const rolMod = 'Mod';
 
 module.exports = (client, message, args) => {
 
@@ -6,11 +5,11 @@ module.exports = (client, message, args) => {
 
     const tag = `<@${member.id}>`
 
-    if(member.hasPermission('ADMINISTRATOR') || member.hasPermission('BAN_MEMBERS')){
+    if(member.hasPermission('BAN_MEMBERS')){
         const target = mentions.users.first();
-        const targetMember = message.guild.members.cache.get(target.id);
         if(target){
             try{
+                const targetMember = message.guild.members.cache.get(target.id);
                 targetMember.ban()
                 message.channel.send(`${targetMember} el usuario ha sido baneado`)
             }catch(err){

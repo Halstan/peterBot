@@ -79,6 +79,9 @@ module.exports = (client, message, args) => {
         {
           name: '!v {evento}',
           value: 'Avisa de un evento proximo'
+        },{
+          name: '!help',
+          value: 'Te da un :candy:'
         }
       ],
       timestamp: new Date(),

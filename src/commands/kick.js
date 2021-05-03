@@ -1,4 +1,3 @@
-const rolMod = 'Mod';
 
 module.exports = (client, message, args) => {
 
@@ -6,7 +5,7 @@ module.exports = (client, message, args) => {
 
     const tag = `<@${member.id}>`
 
-    if(member.hasPermission('ADMINISTRATOR') || member.hasPermission('KICK_MEMBERS')){
+    if(member.hasPermission('KICK_MEMBERS')){
         const target = mentions.users.first();
         if(target){
             try{
