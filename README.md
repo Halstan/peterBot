@@ -22,6 +22,6 @@ PeterBot it's a bot for discord developed in node.js.
 - !disconnect
 
 ### ENV
-Create a .env archive with the variables TOKEN, BIENVENIDA and PREFIX
+Create a .env archive with the variables TOKEN, BIENVENIDA, TRANSLATE_TOKEN and PREFIX
 
 BIENVENIDA is the channel where you welcome to the new members of the server.
