@@ -1,35 +1,40 @@
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
+const translate = require("translate");
 
-module.exports = (client, message, args) => {
-    fetch('https://sv443.net/jokeapi/v2/joke/Any')
-        .then(res => res.json())
-        .then(data => {
-            let category = data.category;
-            let type = data.type;
-            let as = []
-            if(type == 'twopart'){
-                as.push(data.setup);
-                as.push(data.delivery);
-            }else {
-                as.push(data.joke);
-            }
+module.exports = async (client, message, args) => {
+    const config = { to: 'es', engine: 'google', key: process.env.TRANSLATE_TOKEN }
+    try {
+        const res = await fetch('https://sv443.net/jokeapi/v2/joke/Any')
+        const data = await res.json()
+        const body = {
+            category: data.category,
+            type: data.type,
+            as: []
+        }
+        if (data.type == 'twopart') {
+            body.as.push(data.setup)
+            body.as.push(data.delivery)
+        } else body.as.push(data.joke)
 
-            message.channel.send({
+        try {
+            let res = await translate(body.as, config);
+            await message.channel.send({
                 embed: {
                     color: 'LUMINOUS_VIVID_PINK',
-                    title: `Categoria ${category}`,
+                    title: `Categoria ${body.category}`,
                     fields: [
                         {
-                            name: type,
-                            value: as
+                            name: body.type.toUpperCase(),
+                            value: res
                         }
                     ],
                     timestamp: new Date(),
                 }
-            });
-            
-        }).catch(err => {
-            console.error(err)
-            message.channel.send('El chiste se murio de risa')
-        });
+            })
+        } catch (error) {
+            message.channel.send('El chiste se tradujo a puros jajas');
+        }
+    } catch (error) {
+        message.channel.send('El chiste se murio de risa');
+    }
 }
