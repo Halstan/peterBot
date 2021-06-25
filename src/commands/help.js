@@ -70,7 +70,7 @@ module.exports = (client, message, args) => {
           inline: true
         },
         {
-          name: '!help',
+          name: '!dulce',
           value: 'Te da un :candy:',
           inline: true
         },
