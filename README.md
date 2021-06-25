@@ -16,6 +16,7 @@ PeterBot it's a bot for discord developed in node.js.
 - !vino
 - !pipo
 - !joke
+- !mon {code}
 - !ban {id}
 - !kick {id}
 - !play {youtube url}
