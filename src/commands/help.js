@@ -65,6 +65,21 @@ module.exports = (client, message, args) => {
           inline: true
         },
         {
+          name: '!v {evento}',
+          value: 'Avisa de un evento proximo',
+          inline: true
+        },
+        {
+          name: '!help',
+          value: 'Te da un :candy:',
+          inline: true
+        },
+        {
+          name: '!mon {cod}',
+          value: 'Te muestra el balance de la moneda',
+          inline: true
+        },
+        {
           name: "!disconnect",
           value: "Desconecta al bot del chat de voz."
         },
@@ -75,13 +90,6 @@ module.exports = (client, message, args) => {
         {
           name: '!kick',
           value: 'Expulsa a un miembro del servidor (solo con permiso para expulsar miembros).'
-        },
-        {
-          name: '!v {evento}',
-          value: 'Avisa de un evento proximo'
-        },{
-          name: '!help',
-          value: 'Te da un :candy:'
         }
       ],
       timestamp: new Date(),
