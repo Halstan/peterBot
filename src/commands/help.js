@@ -90,6 +90,10 @@ module.exports = (client, message, args) => {
         {
           name: '!kick',
           value: 'Expulsa a un miembro del servidor (solo con permiso para expulsar miembros).'
+        },
+        {
+          name: '!lol',
+          value: 'Muestra el estado del servidor.'
         }
       ],
       timestamp: new Date(),
