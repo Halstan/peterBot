@@ -6,7 +6,7 @@ module.exports = async (client, message, args) => {
     const data = await res.json();
     let i = 0;
     if(data.incidents == 0) {
-      message.channel.send('No hay incidentes.')
+      message.channel.send('No hay nuevos incidentes.')
     } else {
       do {
         message.channel.send({
