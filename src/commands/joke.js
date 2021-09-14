@@ -1,8 +1,6 @@
 const fetch = require('node-fetch');
-const translate = require("translate");
 
 module.exports = async (client, message, args) => {
-    const config = { to: 'es', engine: 'google', key: process.env.TRANSLATE_TOKEN }
     try {
         const res = await fetch('https://sv443.net/jokeapi/v2/joke/Any')
         const data = await res.json()
@@ -17,7 +15,6 @@ module.exports = async (client, message, args) => {
         } else body.as.push(data.joke)
 
         try {
-            let res = await translate(body.as, config);
             await message.channel.send({
                 embed: {
                     color: 'LUMINOUS_VIVID_PINK',
@@ -25,7 +22,7 @@ module.exports = async (client, message, args) => {
                     fields: [
                         {
                             name: body.type.toUpperCase(),
-                            value: res
+                            value: body.as
                         }
                     ],
                     timestamp: new Date(),
